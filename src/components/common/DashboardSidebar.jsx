@@ -25,31 +25,31 @@ const Sidebar = ({ activeItem: initialActive = "Dashboard" }) => {
 
   const navItems = [
     { name: "Dashboard", icon: <LayoutGrid size={20} />, path: "/dashboard" },
+    // {
+    //   name: "Ai Study Mentor",
+    //   icon: <GraduationCap  size={20} />,
+    //   path: "/dashboard/workspace",
+    // },
     {
-      name: "Ai Study Mentor",
-      icon: <GraduationCap  size={20} />,
-      path: "/dashboard/workspace",
+      name: "AI Quiz practice",
+      icon: <Brain size={20} />,
+      path: "/dashboard/ai-quiz-practice",
     },
-    // {
-    //   name: "Quiz practice",
-    //   icon: <Brain size={20} />,
-    //   path: "/dashboard/quiz-practice",
-    // },
-    // {
-    //   name: "AI Notes Generator",
-    //   icon: <BookOpen size={20} />,
-    //   path: "/dashboard/ai-notes-generator",
-    // },
-    // {
-    //   name: "AI Flashcard Generator",
-    //   icon: <Layers size={20} />,
-    //   path: "/dashboard/ai-flashcard-generator",
-    // },
-    // {
-    //   name: "Pdf Summarizer",
-    //   icon: <FileText size={20} />,
-    //   path: "/dashboard/pdf-summarizer",
-    // },
+    {
+      name: "AI Notes Generator",
+      icon: <BookOpen size={20} />,
+      path: "/dashboard/ai-notes-generator",
+    },
+    {
+      name: "AI Flashcard Generator",
+      icon: <Layers size={20} />,
+      path: "/dashboard/ai-flashcard-generator",
+    },
+    {
+      name: "Pdf Summarizer",
+      icon: <FileText size={20} />,
+      path: "/dashboard/pdf-summarizer",
+    },
      {
       name: "Mind map",
       icon: <Network  size={20} />,
