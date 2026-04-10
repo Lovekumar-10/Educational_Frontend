@@ -1,26 +1,34 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FileText, Upload, Type, X, Settings2, File } from "lucide-react";
+
 import OptionsModal from "../../components/Quiz-Components/OptionsModal";
 import GeneratingModal from "../../components/Quiz-Components/GeneratingModal";
+import QuizInterface from "../../components/Quiz-Components/QuizInterface";
 
 const AiQuizPractice = () => {
+
+  // FLOW STATE
+  const [step, setStep] = useState("input"); // "input" or "quiz"
+  
+  // UI STATE
   const [activeTab, setActiveTab] = useState("text");
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
-  const [textContent, setTextContent] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
+  
+  // DATA STATE
+  const [textContent, setTextContent] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const fileInputRef = useRef(null);
 
   const MAX_CHARS = 25000;
 
-  // Simulate moving to the quiz after generation
+ // Transition Logic: From Generating -> Quiz Interface
   useEffect(() => {
     if (isGenerating) {
       const timer = setTimeout(() => {
-        setIsGenerating(false);
-        // alert("Quiz Generated! Move to Quiz View now.");
-        // In real use, you'd navigate to your results page here
-      }, 15000); // 15 seconds to match the modal's countdown
+        setIsGenerating(false); // Close modal
+        setStep("quiz"); // SWITCH TO QUIZ VIEW
+      }, 15000); 
       return () => clearTimeout(timer);
     }
   }, [isGenerating]);
@@ -46,6 +54,11 @@ const AiQuizPractice = () => {
       setIsGenerating(true);
     }
   };
+
+  // IF WE ARE IN QUIZ MODE, SHOW THE INTERFACE
+  if (step === "quiz") {
+    return <QuizInterface showTimer={true} />;
+  }
 
   return (
     <div className="min-h-screen bg-[var(--color-lighter-pink)] font-[var(--ff-primary)] p-4 md:p-10 flex justify-center">
